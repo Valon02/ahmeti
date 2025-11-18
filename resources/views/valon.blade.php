@@ -115,12 +115,12 @@
                     <div class="text-xl leading-relaxed text-slate-800 dark:text-slate-100">
                         <p x-show="isSv()" x-cloak>
                             Fullstackutvecklare utbildad vid Lunds Tekniska Högskola, med fokus på moderna webbapplikationer.
-                            Van vid att arbeta genom hela kedjan – från idé och krav till driftsatt lösning och vidareutveckling –
+                            Van vid att arbeta genom hela kedjan – från idé och krav till driftsatt lösning och vidareutveckling – 
                             med stor vikt vid struktur, kvalitet och ett nära samarbete med användare och beställare.
                         </p>
                         <p x-show="isEn()" x-cloak>
                             Full-stack developer educated at Lund University Faculty of Engineering (LTH), with a focus on modern web applications.
-                            Experienced in working across the entire lifecycle – from idea and requirements to deployment and continuous improvement –
+                            Experienced in working across the entire lifecycle – from idea and requirements to deployment and continuous improvement – 
                             with strong emphasis on structure, quality and close collaboration with users and stakeholders.
                         </p>
                     </div>
@@ -238,15 +238,18 @@
                         class="bg-white dark:bg-[#05081a] rounded-2xl shadow-sm shadow-slate-200/70 dark:shadow-black/50 overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-xl hover:shadow-fuchsia-500/25 transition cursor-pointer"
                         @click="openGalleryFromSlide()"
                     >
-                        {{-- Slideshow --}}
+                        {{-- Slideshow med riktig fade --}}
                         <div class="relative aspect-video overflow-hidden">
-                            <img
-                                :src="slideshowImages[slideshowIndex]"
-                                class="absolute inset-0 w-full h-full object-cover"
-                                x-transition.opacity.duration.1000ms
-                                loading="lazy"
-                                alt="Frisörsalong – skärmdump"
-                            >
+                            <template x-for="(img, idx) in slideshowImages" :key="'slide-' + idx">
+                                <img
+                                    :src="img"
+                                    class="absolute inset-0 w-full h-full object-cover"
+                                    x-show="slideshowIndex === idx"
+                                    x-transition.opacity.duration.1000ms
+                                    loading="lazy"
+                                    :alt="'Frisörsalong – skärmdump ' + (idx + 1)"
+                                >
+                            </template>
 
                             <div class="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent pointer-events-none"></div>
 
@@ -344,7 +347,7 @@
                     <div class="mt-4 h-px w-20 bg-slate-300 dark:bg-slate-700"></div>
                 </div>
 
-                {{-- Light layout – övre tre kort --}}
+                {{-- Light layout --}}
                 <div class="grid gap-12 md:grid-cols-3 dark:hidden">
                     <div class="flex flex-col items-center text-center">
                         <div class="h-14 w-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4">
@@ -405,7 +408,7 @@
                     </div>
                 </div>
 
-                {{-- Light layout – nedersta två kort --}}
+                {{-- Light layout – nedersta två --}}
                 <div class="mt-12 grid gap-12 md:grid-cols-2 max-w-3xl mx-auto dark:hidden">
                     <div class="flex flex-col items-center text-center">
                         <div class="h-14 w-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4">
@@ -441,7 +444,7 @@
                     </div>
                 </div>
 
-                {{-- Dark layout etc (oförändrat) --}}
+                {{-- Dark layout --}}
                 <div class="hidden dark:grid gap-6 md:grid-cols-3 mt-4">
                     @php
                         $skillCards = [
