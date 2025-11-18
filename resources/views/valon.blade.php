@@ -547,7 +547,7 @@
         </section>
 
         {{-- KONTAKT --}}
-        <section id="contact" class="bg-slate-950 text-slate-100 py-24 md:py-28">
+        <section id="contact" class="bg-[#010106] text-slate-100 py-24 md:py-28">
             <div class="max-w-3xl mx-auto px-6">
                 <p class="text-xs tracking-[0.35em] uppercase mb-6 text-slate-400 text-center md:text-left">
                     <span x-show="isSv()" x-cloak>Kontakt</span>
